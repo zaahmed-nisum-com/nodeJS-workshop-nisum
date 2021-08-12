@@ -1,0 +1,22 @@
+{
+  "name": "nodejs-workshop-nisum-2",
+  "version": "1.0.0",
+  "description": "Node js Nisum Workshop",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "npm start",
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zaahmed-nisum-com/nodeJS-workshop-nisum.git"
+  },
+  "author": "Zain Ahmed",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zaahmed-nisum-com/nodeJS-workshop-nisum/issues"
+  },
+  "homepage": "https://github.com/zaahmed-nisum-com/nodeJS-workshop-nisum#readme"
+}
