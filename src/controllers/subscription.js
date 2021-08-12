@@ -15,4 +15,8 @@ module.exports = {
     try {
     } catch (error) {}
   },
+  getSubscriptionById: async () => {
+    try {
+    } catch (error) {}
+  },
 };
