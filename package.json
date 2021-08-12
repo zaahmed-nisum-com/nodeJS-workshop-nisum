@@ -3,7 +3,13 @@
   "version": "1.0.0",
   "description": "Node js Nisum Workshop",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.17.1",
+    "mongoose": "^5.13.7",
+    "morgan": "^1.10.0",
+    "passport": "^0.4.1"
+  },
   "devDependencies": {},
   "scripts": {
     "test": "npm start",
