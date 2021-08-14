@@ -2,6 +2,7 @@ const express = require("express");
 const userRoutes = require("./src/routes/user");
 const authRoutes = require("./src/routes/auth");
 const subscriptionRoutes = require("./src/routes/subscription");
+const moviesRoutes = require("./src/routes/movies");
 const { mongoDBConnection } = require("./src/configurations/database");
 const morgan = require("morgan");
 const cors = require("cors");
@@ -32,3 +33,4 @@ app.use((error, req, res, next) => {
 app.use("/auth", authRoutes);
 app.use("/user", userRoutes);
 app.use("/subscription", subscriptionRoutes);
+app.use("/movies", moviesRoutes);

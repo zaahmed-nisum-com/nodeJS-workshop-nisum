@@ -57,6 +57,12 @@ const UserSchema = new Schema(
     subscription: {
       type: mongoose.Types.ObjectId,
     },
+    subscriptionStartDate: {
+      type: String,
+    },
+    subscriptionTimePeriod: {
+      type: Number,
+    },
     role: [],
   },
   { timestamps: true }

@@ -21,12 +21,17 @@ module.exports = {
     try {
     } catch (error) {}
   },
-  purchaseSubscription: async (req,res,next) => {
+  purchaseSubscription: async (req, res, next) => {
     try {
+      const obj = {
+        subscription: req.body.subscription,
+        subscriptionStartDate: req.body.subscriptionStartDate,
+        subscriptionTimePeriod: req.body.subscriptionTimePeriod,
+      };
       const user = await userModle.findByIdAndUpdate(
         { _id: req.body._id },
-        { subscription: req.body.subscription },
-        {returnOriginal: false }
+        { ...obj },
+        { returnOriginal: false }
       );
       console.log(user);
       res.status(200).send({ data: user, message: "" });
