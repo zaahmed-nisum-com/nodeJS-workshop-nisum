@@ -11,4 +11,7 @@ module.exports = {
       return jwtToken;
     } catch (error) {}
   },
+  get1MohthDifference: async (date, exprieLimitMonth) => {
+    return new Date(date.setDate(date.getDate() + exprieLimitMonth));
+  },
 };
