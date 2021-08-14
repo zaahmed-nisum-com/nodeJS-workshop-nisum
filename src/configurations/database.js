@@ -13,4 +13,5 @@ module.exports = {
       .then(() => console.log("Database connected!"))
       .catch((err) => console.log("error connecting database =>", err));
   },
+  sqlDBConnection: () => {},
 };

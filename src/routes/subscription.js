@@ -7,9 +7,9 @@ const {
   getSubscriptionById,
 } = require("../controllers/subscription");
 
-routers.get("/", isTokenValid, getSubscription);
-routers.get("/", isTokenValid, getSubscriptionById);
-routers.post("/", isTokenValid, addSubscription);
-routers.put("/", isTokenValid, updateSubscription);
+routers.get("/", getSubscription);
+routers.get("/:id", getSubscriptionById);
+routers.post("/", addSubscription);
+routers.put("/", updateSubscription);
 
 module.exports = routers;

@@ -1,3 +1,5 @@
+const userModle = require("../models/user");
+
 module.exports = {
   addUser: async () => {
     try {
@@ -18,5 +20,18 @@ module.exports = {
   getUser: async () => {
     try {
     } catch (error) {}
+  },
+  purchaseSubscription: async (req,res,next) => {
+    try {
+      const user = await userModle.findByIdAndUpdate(
+        { _id: req.body._id },
+        { subscription: req.body.subscription },
+        {returnOriginal: false }
+      );
+      console.log(user);
+      res.status(200).send({ data: user, message: "" });
+    } catch (error) {
+      res.status(400).send({ data: [], message: "" });
+    }
   },
 };

@@ -1,6 +1,9 @@
 module.exports = {
   isAccess: async () => {
     try {
-    } catch (error) {}
+      return true;
+    } catch (error) {
+      throw new Error(error);
+    }
   },
 };
