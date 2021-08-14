@@ -14,15 +14,16 @@ module.exports = {
       });
       const afterDays = await get1MohthDifference(
         new Date(user.subscriptionStartDate),
-        subscription.exprieIn
+        //will replace with the months
+        30
       );
       if (
         new Date() <= afterDays &&
         new Date() >= new Date(user.subscriptionStartDate)
       ) {
-        console.log("true");
+        next();
       } else {
-        console.log("false");
+        throw new Error("Subscription limit error");
       }
     } catch (error) {
       throw new Error(error);

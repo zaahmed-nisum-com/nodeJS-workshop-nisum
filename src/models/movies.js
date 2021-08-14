@@ -6,14 +6,26 @@ const SubscriptionSchema = new Schema(
     title: {
       type: String,
     },
-    description: [],
+    description: [
+      //
+      // {
+      //   actors:[],
+      //   genre:'',
+      //   director:'',
+      // }
+    ],
     category: {
       type: String,
     },
+    permission: [],
     isDeleted: {
       type: Boolean,
       select: false,
       default: false,
+    },
+    poster: {},
+    isAdultContent: {
+      type: String,
     },
   },
   { timestamps: true }
