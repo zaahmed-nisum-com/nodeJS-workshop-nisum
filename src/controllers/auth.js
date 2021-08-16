@@ -1,5 +1,6 @@
 const mongoose = require("mongoose");
 const userModel = require("../models/user");
+const jwtTokenModel = require("../models/jwtToken");
 const bcrypt = require("bcrypt");
 const { generateJwtToken } = require("../utilities/helper");
 
@@ -45,6 +46,14 @@ module.exports = {
             user: isEmailValid._id,
             email: isEmailValid.email,
           });
+          const jwtTokenRegister = await jwtTokenModel.create({
+            token: jwtToken,
+            user: mongoose.Types.ObjectId(isEmailValid._id),
+            expriedIn: new Date(
+              new Date().setHours(new Date().getHours() + 15)
+            ),
+          });
+          console.log(jwtTokenRegister);
           res.status(200).send("Login");
         } else {
           res.status(400).send("Email or Password is wrong");
