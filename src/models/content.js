@@ -1,7 +1,7 @@
 const mongoose = require("mongoose"),
   Schema = mongoose.Schema;
 
-const SubscriptionSchema = new Schema(
+const ContentSchema = new Schema(
   {
     title: {
       type: String,
@@ -28,4 +28,4 @@ const SubscriptionSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("subscription", SubscriptionSchema);
+module.exports = mongoose.model("content", ContentSchema);

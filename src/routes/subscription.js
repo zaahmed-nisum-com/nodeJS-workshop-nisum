@@ -7,8 +7,8 @@ const {
   getSubscriptionById,
 } = require("../controllers/subscription");
 
-routers.get("/", getSubscription);
 routers.get("/:id", getSubscriptionById);
+routers.get("/", getSubscription);
 routers.post("/", addSubscription);
 routers.put("/", updateSubscription);
 
