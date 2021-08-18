@@ -57,10 +57,44 @@ module.exports = {
   },
   watchContent: async (req, res, next) => {
     try {
+      res.status(200).send({
+        data: [{ message: "watch content" }],
+        message: "Successfull",
+        isError: false,
+        error: {},
+      });
     } catch (error) {
       res
         .status(400)
-        .send({ data: [], message: "Successfull", isError: true, error });
+        .send({ data: [], message: "ERROR", isError: true, error });
+    }
+  },
+  download: async (req, res, next) => {
+    try {
+      res.status(200).send({
+        data: [{ message: " download" }],
+        message: "Successfull",
+        isError: false,
+        error: {},
+      });
+    } catch (error) {
+      res
+        .status(400)
+        .send({ data: [], message: "Error", isError: true, error });
+    }
+  },
+  comment: async (req, res, next) => {
+    try {
+      res.status(200).send({
+        data: [{ message: " comment" }],
+        message: "Successfull",
+        isError: false,
+        error: {},
+      });
+    } catch (error) {
+      res
+        .status(400)
+        .send({ data: [], message: "Error", isError: true, error });
     }
   },
 };
