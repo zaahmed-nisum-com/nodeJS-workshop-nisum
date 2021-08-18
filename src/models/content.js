@@ -6,7 +6,9 @@ const ContentSchema = new Schema(
     title: {
       type: String,
     },
-    description: [],
+    cast: [],
+    director: [],
+    details: {},
     category: {
       type: String,
     },
@@ -14,13 +16,14 @@ const ContentSchema = new Schema(
       type: mongoose.Types.ObjectId,
       ref: "user",
     },
-    permission: [],
+    permissions: [],
     isDeleted: {
       type: Boolean,
       select: false,
       default: false,
     },
     poster: {},
+    urls: {},
     isAdultContent: {
       type: String,
     },

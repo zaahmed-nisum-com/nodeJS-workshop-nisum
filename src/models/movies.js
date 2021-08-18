@@ -17,7 +17,7 @@ const SubscriptionSchema = new Schema(
     category: {
       type: String,
     },
-    permission: [],
+    permissions: [],
     isDeleted: {
       type: Boolean,
       select: false,

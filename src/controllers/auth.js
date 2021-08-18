@@ -24,7 +24,9 @@ module.exports = {
       };
 
       const user = await userModel.create(userObj);
-      res.status(200).send("Account Creat");
+      res
+        .status(200)
+        .send({ data: [], message: "Successfull", isError: true, error });
     } catch (error) {
       res.status(400).send(error);
     }
@@ -53,8 +55,18 @@ module.exports = {
               new Date().setHours(new Date().getHours() + 15)
             ),
           });
-          console.log(jwtTokenRegister);
-          res.status(200).send("Login");
+          delete isEmailValid.password;
+          res.status(200).send({
+            data: [
+              {
+                ...isEmailValid,
+                token: jwtTokenRegister.token,
+              },
+            ],
+            message: "Successfull",
+            isError: true,
+            error: {},
+          });
         } else {
           res.status(400).send("Email or Password is wrong");
         }
@@ -62,7 +74,10 @@ module.exports = {
         res.status(400).send("Email or Password is wrong");
       }
     } catch (error) {
-      res.status(400).send(error);
+      console.log(error);
+      res
+        .status(400)
+        .send({ data: [], message: "Successfull", isError: true, error });
     }
   },
 };
