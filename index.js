@@ -23,6 +23,10 @@ app.listen(PORT, () => {
   console.log("Server start at 8001");
 });
 
+app.get("/helthcheck", (req, res) => {
+  res.send("server is running");
+});
+
 app.use((error, req, res, next) => {
   console.log("Error Handling Middleware called");
   console.log("Path: ", req.path);
