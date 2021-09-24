@@ -19,7 +19,7 @@ app.use(morgan());
 app.use(cors());
 mongoDBConnection();
 
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
   console.log("Server start at 8001");
 });
 
