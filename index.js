@@ -11,8 +11,8 @@ const app = express();
 const PORT = 8001;
 require("dotenv").config();
 
-console.log(process.env.PORT);
-console.log(process.env.JWT_TOKEN_SECRET_KEY);
+// console.log(process.env.PORT);
+// console.log(process.env.JWT_TOKEN_SECRET_KEY);
 
 app.use(express.urlencoded());
 app.use(morgan());
