@@ -24,12 +24,21 @@ module.exports = {
   },
   getSubscription: async (req, res, next) => {
     try {
-      console.log(req.body);
       const subscription = await subscriptionModel.find({ isDeleted: false });
-      res
-        .status(200)
-        .send({ data: subscription, message: "fetch successfull" });
-    } catch (error) {}
+      res.status(200).send({
+        data: subscription,
+        message: "fetch successfull",
+        isError: false,
+        error: {},
+      });
+    } catch (error) {
+      res.status(400).send({
+        data: [],
+        message: "fetch failed",
+        isError: true,
+        error,
+      });
+    }
   },
   getSubscriptionById: async (req, res, next) => {
     try {

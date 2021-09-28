@@ -6,22 +6,20 @@ const contentRoutes = require("./src/routes/content");
 const { mongoDBConnection } = require("./src/configurations/database");
 const morgan = require("morgan");
 const cors = require("cors");
+const bodyParser = require("body-parser");
+require("dotenv").config();
+mongoDBConnection();
 
 const app = express();
 const PORT = 8001;
-require("dotenv").config();
 
-// console.log(process.env.PORT);
-// console.log(process.env.JWT_TOKEN_SECRET_KEY);
-
-app.use(express.urlencoded());
 app.use(morgan());
 app.use(cors());
-mongoDBConnection();
 
-app.listen(process.env.PORT || PORT, () => {
-  console.log("Server start at 8001");
-});
+// app.use(require("./src/middlewares/setHeaders"));
+
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(express.json({ extended: true }));
 
 app.get("/helthcheck", (req, res) => {
   res.send("server is running");
@@ -38,3 +36,7 @@ app.use("/auth", authRoutes);
 app.use("/user", userRoutes);
 app.use("/subscription", subscriptionRoutes);
 app.use("/content", contentRoutes);
+
+app.listen(process.env.PORT || PORT, () => {
+  console.log("Server start at 8001");
+});
