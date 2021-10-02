@@ -26,4 +26,16 @@ module.exports = {
         .send({ data: [], message: "Error", isError: true, error });
     }
   },
+  addProduct: async (req, res) => {
+    try {
+    } catch (error) {}
+  },
+  updateProduct: async (req, res) => {
+    try {
+    } catch (error) {}
+  },
+  deleteProduct: async (req, res) => {
+    try {
+    } catch (error) {}
+  },
 };
