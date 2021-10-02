@@ -39,4 +39,8 @@ module.exports = {
       res.status(400).send({ data: [], message: "" });
     }
   },
+  getAllTransectionByUserId: async (req, res) => {
+    try {
+    } catch (error) {}
+  },
 };
