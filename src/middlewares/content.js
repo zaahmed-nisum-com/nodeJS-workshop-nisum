@@ -4,7 +4,6 @@ const contentModel = require("../models/content");
 const mongoose = require("mongoose");
 
 const getAccessData = async (req) => {
-  console.log(req.params);
   const user = await userModel
     .findOne({
       _id: mongoose.Types.ObjectId(req.body.user),
@@ -49,7 +48,6 @@ module.exports = {
   },
   isReadAndWriteAndDownload: async (req, res, next) => {
     const data = await getAccessData(req);
-    console.log(data);
     data.user.subscription.permissions.every((elem) =>
       data.content.permissions.includes(elem)
     );

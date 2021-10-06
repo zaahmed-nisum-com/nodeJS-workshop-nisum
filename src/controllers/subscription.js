@@ -4,11 +4,8 @@ const mongoose = require("mongoose");
 module.exports = {
   addSubscription: async (req, res, next) => {
     try {
-      console.log(req.body);
       req.body.permissions = req.body.permissions.split(",");
-      console.log(req.body);
       const subscription = await subscriptionModel.create({ ...req.body });
-      console.log(subscription);
       res.status(200).send("Subscription create");
     } catch (error) {
       res.status(400).send(error);
@@ -42,7 +39,6 @@ module.exports = {
   },
   getSubscriptionById: async (req, res, next) => {
     try {
-      console.log(req.params);
       const subscription = await subscriptionModel.find({
         _id: mongoose.Types.ObjectId(req.params.id),
       });

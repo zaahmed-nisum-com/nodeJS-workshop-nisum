@@ -1,6 +1,6 @@
 const contentModle = require("../models/content");
 const userModle = require("../models/user");
-const fs = require('fs')
+const fs = require("fs");
 const mongoose = require("mongoose");
 
 module.exports = {
@@ -27,7 +27,6 @@ module.exports = {
   },
   getContentByUserId: async (req, res, next) => {
     try {
-      console.log(req.params.user);
       const user = await userModle
         .findOne({
           _id: mongoose.Types.ObjectId(req.params.user),
@@ -59,9 +58,7 @@ module.exports = {
   watchContent: async (req, res, next) => {
     try {
       const path = "assets/videos/movie.mp4";
-      console.log(path)
       const stat = fs.statSync(path);
-      console.log(stat)
       const fileSize = stat.size;
       const range = req.headers.range;
       if (range) {
@@ -93,7 +90,7 @@ module.exports = {
       //   error: {},
       // });
     } catch (error) {
-      console.log(error)
+      console.log(error);
       res
         .status(400)
         .send({ data: [], message: "ERROR", isError: true, error });

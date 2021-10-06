@@ -24,9 +24,16 @@ module.exports = {
       };
 
       const user = await userModel.create(userObj);
-      res
-        .status(200)
-        .send({ data: [], message: "Successfull", isError: false, error: {} });
+
+      delete user.password;
+      delete user.lastPasswordChanged;
+
+      res.status(200).send({
+        data: [{ ...user }],
+        message: "Successfull",
+        isError: false,
+        error: {},
+      });
     } catch (error) {
       res
         .status(400)
@@ -39,7 +46,6 @@ module.exports = {
         .findOne({ email: req.body.email })
         .select("+password")
         .lean();
-      console.log(isEmailValid);
       if (isEmailValid != null) {
         const isPasswordValid = await bcrypt.compareSync(
           req.body.password,
@@ -66,14 +72,24 @@ module.exports = {
               },
             ],
             message: "Successfull",
-            isError: true,
+            isError: false,
             error: {},
           });
         } else {
-          res.status(400).send({ message: "Email or Password is wrong" });
+          res.status(400).send({
+            data: [],
+            message: "Email or Password is wrong",
+            isError: true,
+            error: { message: "Email or Password is wrong" },
+          });
         }
       } else {
-        res.status(403).send({ message: "Email or Password is wrong" });
+        res.status(400).send({
+          data: [],
+          message: "Email or Password is wrong",
+          isError: true,
+          error: { message: "Email or Password is wrong" },
+        });
       }
     } catch (error) {
       console.log(error);

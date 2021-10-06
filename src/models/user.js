@@ -24,7 +24,7 @@ const UserSchema = new Schema(
     },
     phoneNo: {
       type: Number,
-      required: [true, "Phone number is required"],
+      required: [false, "Phone number is required"],
     },
     emailVerified: {
       type: Boolean,

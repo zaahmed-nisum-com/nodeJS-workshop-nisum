@@ -1,9 +1,19 @@
-const contentModle = require("../models/content");
-const userModle = require("../models/user");
-const fs = require("fs");
-const mongoose = require("mongoose");
+const merchandiseModel = require("../models/merchandise");
 
 module.exports = {
+  createMerchandise: async (req, res) => {
+    try {
+      const merchandise = await merchandiseModel.create(req.body);
+      console.log(merchandise);
+      res
+        .status(200)
+        .send({ data: [], message: "Successfull", isError: false, error: {} });
+    } catch (error) {
+      res
+        .status(400)
+        .send({ data: [], message: "error", isError: true, error });
+    }
+  },
   getAllMerchandiseById: async (req, res, next) => {
     try {
       res

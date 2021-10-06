@@ -33,7 +33,6 @@ module.exports = {
         { ...obj },
         { returnOriginal: false }
       );
-      console.log(user);
       res.status(200).send({ data: user, message: "" });
     } catch (error) {
       res.status(400).send({ data: [], message: "" });

@@ -28,7 +28,6 @@ app.get("/helthcheck", (req, res) => {
 
 app.use((error, req, res, next) => {
   console.log("Error Handling Middleware called");
-  console.log("Path: ", req.path);
   res.status(400).send(error);
   next(); // (optional) invoking next middleware
 });
