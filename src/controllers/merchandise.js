@@ -1,4 +1,6 @@
 const merchandiseModel = require("../models/merchandise");
+const productModel = require("../models/product");
+const mongoose = require("mongoose");
 
 module.exports = {
   createMerchandise: async (req, res) => {
@@ -14,11 +16,19 @@ module.exports = {
         .send({ data: [], message: "error", isError: true, error });
     }
   },
-  getAllMerchandiseById: async (req, res, next) => {
+  getAllMerchandiseByUserId: async (req, res, next) => {
     try {
-      res
-        .status(200)
-        .send({ data: [], isError: false, error: {}, message: "Successfull" });
+      const merchandise = await merchandiseModel
+        .findOne({
+          user: mongoose.Types.ObjectId(req.params.id), //this user id will replace with user id extract from jwt token
+        })
+        .populate("user");
+      res.status(200).send({
+        data: [{ ...merchandise }],
+        isError: false,
+        error: {},
+        message: "Successfull",
+      });
     } catch (error) {
       res
         .status(400)
@@ -27,9 +37,17 @@ module.exports = {
   },
   getProuctById: async (req, res, next) => {
     try {
-      res
-        .status(200)
-        .send({ data: [], isError: false, error: {}, message: "Successfull" });
+      const merchandise = await productModel
+        .find({
+          user: mongoose.Types.ObjectId(req.params.id), //this user id will replace with user id extract from jwt token
+        })
+        .populate("user");
+      res.status(200).send({
+        data: [{ ...merchandise }],
+        isError: false,
+        error: {},
+        message: "Successfull",
+      });
     } catch (error) {
       res
         .status(400)

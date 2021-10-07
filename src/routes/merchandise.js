@@ -1,11 +1,11 @@
 const routers = require("express").Router();
 const {
-  getAllMerchandiseById,
+  getAllMerchandiseByUserId,
   getProuctById,
   createMerchandise,
 } = require("../controllers/merchandise");
 
-routers.get("/", getAllMerchandiseById);
+routers.get("/:id", getAllMerchandiseByUserId);
 routers.get("/product", getProuctById);
 routers.post("/", createMerchandise);
 

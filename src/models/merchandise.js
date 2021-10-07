@@ -6,6 +6,7 @@ const MerchandiseSchema = new Schema(
     user: { type: Schema.Types.ObjectId, ref: "user" },
     title: {
       type: String,
+      unique: true,
     },
   },
   { timestamps: true }

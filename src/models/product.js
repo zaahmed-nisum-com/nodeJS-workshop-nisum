@@ -8,6 +8,16 @@ const ProductSchema = new Schema(
     title: {
       type: String,
     },
+    varients: {
+      color: [],
+      sizes: [],
+    },
+    price: {
+      type: String,
+    },
+    isDeleted: {
+      type: Boolean,
+    },
   },
   { timestamps: true }
 );

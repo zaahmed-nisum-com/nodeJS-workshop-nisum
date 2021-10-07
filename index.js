@@ -4,6 +4,7 @@ const authRoutes = require("./src/routes/auth");
 const subscriptionRoutes = require("./src/routes/subscription");
 const contentRoutes = require("./src/routes/content");
 const merchandiseRoutes = require("./src/routes/merchandise");
+const productRoutes = require("./src/routes/product");
 const { mongoDBConnection } = require("./src/configurations/database");
 const morgan = require("morgan");
 const cors = require("cors");
@@ -38,6 +39,7 @@ app.use("/user", userRoutes);
 app.use("/subscription", subscriptionRoutes);
 app.use("/content", contentRoutes);
 app.use("/merchandise", merchandiseRoutes);
+app.use("/product", productRoutes);
 
 app.listen(process.env.PORT || PORT, () => {
   console.log("Server start at 8001");
