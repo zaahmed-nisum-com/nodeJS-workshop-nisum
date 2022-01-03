@@ -42,4 +42,23 @@ module.exports = {
     try {
     } catch (error) {}
   },
+
+  //For testing
+  getAllUsers: async (req, res) => {
+    try {
+      const users = await userModle.find({});
+      console.log(users);
+      res.status(200).send({
+        data: [...users],
+        isError: false,
+        error: {},
+        message: "Successfull",
+      });
+    } catch (error) {
+      console.log(error);
+      res
+        .status(400)
+        .send({ data: [], message: "Error", isError: true, error });
+    }
+  },
 };

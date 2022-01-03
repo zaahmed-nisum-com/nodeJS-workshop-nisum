@@ -1,7 +1,7 @@
 module.exports = {
-  isAccess: async () => {
+  isAccess: async (req, res, next) => {
     try {
-      next()
+      // next();
     } catch (error) {
       throw new Error(error);
     }

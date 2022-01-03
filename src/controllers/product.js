@@ -26,9 +26,20 @@ module.exports = {
         .send({ data: [], message: "Error", isError: true, error });
     }
   },
-  addProductUser: async (req, res) => {
+  addProductByUser: async (req, res) => {
     try {
-    } catch (error) {}
+      const product = await productModel.create(req.body);
+      // console.log(JSON.parse(req.body.varients))
+      console.log(product);
+      res
+        .status(200)
+        .send({ data: [], message: "Successfull", isError: false, error: {} });
+    } catch (error) {
+      console.log(error);
+      res
+        .status(400)
+        .send({ data: [], message: "error", isError: true, error });
+    }
   },
   updateProductByUser: async (req, res) => {
     try {
@@ -37,5 +48,21 @@ module.exports = {
   deleteProductByUser: async (req, res) => {
     try {
     } catch (error) {}
+  },
+  // for testing
+  getAllProducts: async (req, res) => {
+    try {
+      const products = await productModel.find({});
+      res.status(200).send({
+        data: products,
+        message: "Successfull",
+        isError: false,
+        error: {},
+      });
+    } catch (error) {
+      res
+        .status(400)
+        .send({ data: [], message: "error", isError: true, error });
+    }
   },
 };

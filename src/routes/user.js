@@ -8,8 +8,10 @@ const {
   getUser,
   getUsers,
   purchaseSubscription,
+  getAllUsers,
 } = require("../controllers/users");
 
+routers.get("/", getAllUsers);
 routers.get("/", isAccess, isTokenValid, getUsers);
 routers.get("/", isAccess, isTokenValid, getUser);
 routers.post("/", isAccess, isTokenValid, addUser);

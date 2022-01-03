@@ -66,4 +66,23 @@ module.exports = {
     try {
     } catch (error) {}
   },
+
+  // for testing
+  getAllMerchandise: async (req, res, next) => {
+    try {
+      const merchandise = await merchandiseModel.find({}).populate("user");
+      console.log(merchandise);
+      res.status(200).send({
+        data: [...merchandise],
+        isError: false,
+        error: {},
+        message: "Successfull",
+      });
+    } catch (error) {
+      console.log(errior);
+      res
+        .status(400)
+        .send({ data: [], message: "Error", isError: true, error });
+    }
+  },
 };

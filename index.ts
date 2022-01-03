@@ -1,10 +1,13 @@
-const express = require("express");
+import express, { Request, NextFunction, Response } from "express";
 const userRoutes = require("./src/routes/user");
 const authRoutes = require("./src/routes/auth");
 const subscriptionRoutes = require("./src/routes/subscription");
 const contentRoutes = require("./src/routes/content");
 const merchandiseRoutes = require("./src/routes/merchandise");
 const productRoutes = require("./src/routes/product");
+const searchRoutes = require("./src/routes/search");
+const orderRoutes = require("./src/routes/order");
+const cartRoutes = require("./src/routes/cart");
 const { mongoDBConnection } = require("./src/configurations/database");
 const morgan = require("morgan");
 const cors = require("cors");
@@ -19,20 +22,20 @@ app.use(morgan());
 app.use(cors());
 
 // app.use(require("./src/middlewares/setHeaders"));
-
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(express.json({ extended: true }));
+// app.use(express.json({ extended: true }));
 
-app.get("/helthcheck", (req, res) => {
+app.get("/helthcheck", (req: Request, res: Response) => {
   res.send("server is running");
 });
 
-app.use((error, req, res, next) => {
-  console.log("Error Handling Middleware called");
-  console.log("Path: ", req.path);
-  res.status(400).send(error);
-  next(); // (optional) invoking next middleware
-});
+// app.use((error: any, req: Request, res: Response, next: NextFunction) => {
+//   console.log("Error Handling Middleware called");
+//   console.log("Path: ", req.path);
+//   res.status(400).send(error);
+//   next(); // (optional) invoking next middleware
+// });
 
 app.use("/auth", authRoutes);
 app.use("/user", userRoutes);
@@ -40,6 +43,9 @@ app.use("/subscription", subscriptionRoutes);
 app.use("/content", contentRoutes);
 app.use("/merchandise", merchandiseRoutes);
 app.use("/product", productRoutes);
+app.use("/search", searchRoutes);
+app.use("/order", orderRoutes);
+app.use("/cart", cartRoutes);
 
 app.listen(process.env.PORT || PORT, () => {
   console.log("Server start at 8001");

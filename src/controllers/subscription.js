@@ -8,7 +8,9 @@ module.exports = {
       const subscription = await subscriptionModel.create({ ...req.body });
       res.status(200).send("Subscription create");
     } catch (error) {
-      res.status(400).send(error);
+      res
+        .status(400)
+        .send({ data: [], message: "error", isError: true, error });
     }
   },
   updateSubscription: async () => {
@@ -42,9 +44,12 @@ module.exports = {
       const subscription = await subscriptionModel.find({
         _id: mongoose.Types.ObjectId(req.params.id),
       });
-      res
-        .status(200)
-        .send({ data: subscription, message: "fetch successfull" });
+      res.status(200).send({
+        data: subscription,
+        message: "Successfull",
+        isError: false,
+        error: {},
+      });
     } catch (error) {}
   },
 };
