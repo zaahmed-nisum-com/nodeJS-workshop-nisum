@@ -47,7 +47,6 @@ module.exports = {
   getAllUsers: async (req, res) => {
     try {
       const users = await userModle.find({});
-      console.log(users);
       res.status(200).send({
         data: [...users],
         isError: false,

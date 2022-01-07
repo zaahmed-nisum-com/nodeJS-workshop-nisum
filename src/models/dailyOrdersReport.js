@@ -3,8 +3,8 @@ const mongoose = require("mongoose"),
 
 const DailyOrderReportSchema = new Schema(
   {
-    order: { type: Schema.Types.ObjectId, ref: "order" },
-    totalOrders: {
+    orders: [],
+    count: {
       type: Number,
     },
   },

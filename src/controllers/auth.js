@@ -7,7 +7,6 @@ const { generateJwtToken } = require("../utilities/helper");
 module.exports = {
   signUp: async (req, res, next) => {
     try {
-      console.log("body=>", req.body);
       const body = req.body;
       const salt = await bcrypt.genSalt(10);
 

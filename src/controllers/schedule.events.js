@@ -14,7 +14,6 @@ module.exports = {
           },
         },
       ]);
-      console.log("todayOrders=>", todayOrders);
       res.status(200).send({
         data: [],
         message: "Successfull",

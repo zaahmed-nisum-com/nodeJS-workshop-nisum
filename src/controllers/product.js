@@ -4,7 +4,6 @@ const mongoose = require("mongoose");
 module.exports = {
   getProuctByMerchandiseId: async (req, res, next) => {
     try {
-      console.log(req.params);
       const product = await productModel
         .find({
           user: mongoose.Types.ObjectId(req.params.id), //this user id will replace with user id extract from jwt token
@@ -12,7 +11,6 @@ module.exports = {
         })
         .populate("user")
         .populate("merchandise");
-      console.log(product);
       res.status(200).send({
         data: product,
         isError: false,
@@ -29,8 +27,6 @@ module.exports = {
   addProductByUser: async (req, res) => {
     try {
       const product = await productModel.create(req.body);
-      // console.log(JSON.parse(req.body.varients))
-      console.log(product);
       res
         .status(200)
         .send({ data: [], message: "Successfull", isError: false, error: {} });

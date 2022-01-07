@@ -3,11 +3,12 @@ const mongoose = require("mongoose"),
 
 const OrderSchema = new Schema(
   {
-    user: [{ type: Schema.Types.ObjectId, ref: "user" }],
-    cart: [{ type: Schema.Types.ObjectId, ref: "cart" }],
+    user: { type: Schema.Types.ObjectId, ref: "user" },
+    cart: { type: Schema.Types.ObjectId, ref: "cart" },
     tempOrderNo: {
       type: String,
     },
+    order: [],
   },
   { timestamps: true }
 );

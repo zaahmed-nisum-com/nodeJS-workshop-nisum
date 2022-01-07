@@ -4,12 +4,13 @@ const mongoose = require("mongoose");
 module.exports = {
   searchAllProduct: async (req, res) => {
     try {
+      console.log(req.query);
       const search = await productModel.aggregate([
         {
           $search: {
             index: "product-search",
             text: {
-              query: "product",
+              query: `${req.query.q}`,
               path: {
                 wildcard: "*",
               },
@@ -23,7 +24,6 @@ module.exports = {
         isError: false,
         error: {},
       });
-    } catch (error) {
-    }
+    } catch (error) {}
   },
 };

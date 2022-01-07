@@ -6,7 +6,6 @@ module.exports = {
   createMerchandise: async (req, res) => {
     try {
       const merchandise = await merchandiseModel.create(req.body);
-      console.log(merchandise);
       res
         .status(200)
         .send({ data: [], message: "Successfull", isError: false, error: {} });
@@ -71,7 +70,6 @@ module.exports = {
   getAllMerchandise: async (req, res, next) => {
     try {
       const merchandise = await merchandiseModel.find({}).populate("user");
-      console.log(merchandise);
       res.status(200).send({
         data: [...merchandise],
         isError: false,
@@ -79,7 +77,7 @@ module.exports = {
         message: "Successfull",
       });
     } catch (error) {
-      console.log(errior);
+      console.log(error);
       res
         .status(400)
         .send({ data: [], message: "Error", isError: true, error });
