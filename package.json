@@ -16,11 +16,10 @@
     "mongoose": "^5.13.7",
     "morgan": "^1.10.0",
     "nodemon": "^2.0.13",
-    "passport": "^0.4.1"
-  },
-  "devDependencies": {
+    "passport": "^0.4.1",
     "ts-node": "^10.4.0"
   },
+  "devDependencies": {},
   "scripts": {
     "test": "npm start",
     "start": "nodemon index.ts",
