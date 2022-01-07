@@ -26,7 +26,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 // app.use(express.json({ extended: true }));
 
-app.get("/helthcheck", (req: Request, res: Response) => {
+app.get("/helthcheck", (req ,res) => {
   res.send("server is running");
 });
 

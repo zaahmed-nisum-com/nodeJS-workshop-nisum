@@ -1,9 +1,8 @@
 const mongoose = require("mongoose");
 const cartModel = require("../models/cart");
-import express, { Request, Response } from "express";
 
 module.exports = {
-  addToCart: async (req: Request, res: Response) => {
+  addToCart: async (req, res) => {
     try {
       const cart = await cartModel.create(req.body);
       res
@@ -13,5 +12,5 @@ module.exports = {
       console.log(error);
     }
   },
-  removeFromCart: async (req: Request, res: Response) => {},
+  removeFromCart: async (req, res) => {},
 };
