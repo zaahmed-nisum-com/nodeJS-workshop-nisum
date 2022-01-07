@@ -18,7 +18,9 @@
     "nodemon": "^2.0.13",
     "passport": "^0.4.1"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "ts-node": "^10.4.0"
+  },
   "scripts": {
     "test": "npm start",
     "start": "nodemon index.ts",
