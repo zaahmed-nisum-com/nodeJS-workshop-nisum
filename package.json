@@ -19,7 +19,9 @@
     "passport": "^0.4.1",
     "ts-node": "^10.4.0"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "typescript": "^4.5.4"
+  },
   "scripts": {
     "test": "npm start",
     "start": "nodemon index.ts",
