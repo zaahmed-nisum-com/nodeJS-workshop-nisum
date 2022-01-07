@@ -1,3 +1,4 @@
+const express = require("express");
 const userRoutes = require("./src/routes/user");
 const authRoutes = require("./src/routes/auth");
 const subscriptionRoutes = require("./src/routes/subscription");
