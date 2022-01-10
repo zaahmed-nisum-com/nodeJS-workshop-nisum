@@ -5,7 +5,7 @@ const dailyOrdersReportModel = require("../models/dailyOrdersReport");
 module.exports = {
   getTodayOrders: async (req, res) => {
     try {
-      const todayOrders = await orderModel.aggregate([
+      const todayOrders = await dailyOrdersReportModel.aggregate([
         {
           $match: {
             createdAt: {
@@ -14,18 +14,28 @@ module.exports = {
             },
           },
         },
-        {
-          $group: {
-            _id: null,
-            count: { $sum: 1 },
-            orders: { $push: "$$ROOT" } 
-          },
-        },
       ]);
+      // const todayOrders = await orderModel.aggregate([
+      //   {
+      //     $match: {
+      //       createdAt: {
+      //         $gte: new Date(new Date().setHours(0, 0, 0, 0)),
+      //         $lt: new Date(new Date().setHours(23, 59, 59, 999)),
+      //       },
+      //     },
+      //   },
+      //   {
+      //     $group: {
+      //       _id: null,
+      //       count: { $sum: 1 },
+      //       orders: { $push: "$$ROOT" }
+      //     },
+      //   },
+      // ]);
       console.log(todayOrders);
-      const dailyOrderReport = await dailyOrdersReportModel.create(todayOrders[0])
+      // const dailyOrderReport = await dailyOrdersReportModel.create(todayOrders[0])
       res.status(200).send({
-        data: [],
+        data: [...todayOrders],
         message: "Successfull",
         isError: false,
         error: {},
