@@ -7,7 +7,7 @@ const DailyOrderReportSchema = new Schema(
     count: {
       type: Number,
     },
-    createdAt: { type: Date, default: new Date() },
+    createdAt: { type: Date, },
   },
   { timestamps: true }
 );
